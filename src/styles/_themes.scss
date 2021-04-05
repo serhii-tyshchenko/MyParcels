@@ -1,0 +1,22 @@
+:root {
+  --color-primary: #{$color-black};
+  --color-secondary: #{$color-mishka};
+  --color-secondary-darken: #{darken($color-mishka, 10%)};
+  --color-accent: #{$color-dodger-blue};
+  --background-primary: #{$color-solitude};
+  --background-secondary: #{$color-white};
+}
+[data-theme='dark'] {
+  --color-primary: #{$color-white};
+  --color-secondary: #{$color-mishka};
+  --color-accent: #{$color-dodger-blue};
+  --background-primary: #{$color-black};
+  --background-secondary: #{$color-bunker};
+}
+[data-theme='light'] {
+  --color-primary: #{$color-black};
+  --color-secondary: #{$color-mishka};
+  --color-accent: #{$color-dodger-blue};
+  --background-primary: #{$color-solitude};
+  --background-secondary: #{$color-white};
+}

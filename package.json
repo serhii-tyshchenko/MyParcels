@@ -1,0 +1,53 @@
+{
+  "name": "my-parcels",
+  "homepage": "https://serhii-tyshchenko.github.io/MyParcels/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serhii-tyshchenko/MyParcels"
+  },
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "ghp-predeploy": "npm run build",
+    "ghp-deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^12.20.7",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest",
+    "react-redux": "latest",
+    "react-router-dom": "latest",
+    "redux": "latest",
+    "redux-thunk": "latest",
+    "typescript": "latest",
+    "web-vitals": "latest",
+    "node-sass": "latest",
+    "uuid": "latest",
+    "reselect": "latest"
+  },
+  "devDependencies": {
+    "gh-pages": "latest"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
+}
