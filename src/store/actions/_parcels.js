@@ -7,12 +7,37 @@ import {
   API_REQUEST_ENDED,
 } from '../action-types';
 
+function formatAPIResponse(response) {
+  const { Number, CitySender, CityRecipient, Status } = response.data[0];
+  return {
+    number: Number,
+    citySender: CitySender,
+    cityRecipient: CityRecipient,
+    status: Status,
+  };
+}
+
+function actionAddParcel(data) {
+  return { type: ADD_PARCEL, payload: formatAPIResponse(data) };
+}
+
+function isNumberNotFound(data) {
+  return data.data[0].StatusCode === '3';
+}
+
 export const addParcel = (number) => (dispatch) => {
   dispatch({ type: API_REQUEST_STARTED });
   api
     .getParcelInfo(number)
-    .then((data) => dispatch({ type: ADD_PARCEL, payload: data }))
-    .catch((error) => console.log('Error'))
+    .then((data) => {
+      if (isNumberNotFound(data)) {
+        alert('Number not found!');
+        return;
+      } else {
+        dispatch(actionAddParcel(data));
+      }
+    })
+    .catch((error) => console.log('Error', error))
     .finally(() => dispatch({ type: API_REQUEST_ENDED }));
 };
 

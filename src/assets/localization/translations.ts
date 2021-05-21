@@ -11,12 +11,15 @@ type Translation = {
 const translations: Translation = {
   en: {
     SIGN_IN: 'Sign In',
+    TRACK: 'Track',
   },
   ua: {
     SIGN_IN: 'Увійти',
+    TRACK: 'Відстежити',
   },
   ru: {
     SIGN_IN: 'Войти',
+    TRACK: 'Отследить',
   },
 };
 
