@@ -1,27 +1,22 @@
-import { useContext } from 'react';
-import { Localization } from 'contexts';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateSettings } from 'store/actions';
-import { getUserId, getAppTheme } from 'store/selectors';
-import { UIIconButton } from 'components';
+import { UIIconButton } from 'modules/ui';
 
 const ThemeToggler = () => {
-  const STR = useContext(Localization);
   const dispatch = useDispatch();
-  const theme = useSelector(getAppTheme);
-  const uid = useSelector(getUserId);
+  const { theme } = useSelector((state) => state.settings);
   const btnIcon = theme === 'light' ? 'moon' : 'sun';
 
   function handleThemeChange() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    dispatch(updateSettings(uid, { theme: newTheme }));
+    dispatch(updateSettings({ theme: newTheme }));
   }
 
   return (
     <UIIconButton
       icon={btnIcon}
       onClick={handleThemeChange}
-      title={STR.TOGGLE_THEME}
+      extraClassName="theme-toggler"
     />
   );
 };
