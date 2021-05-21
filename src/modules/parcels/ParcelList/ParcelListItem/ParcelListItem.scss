@@ -1,10 +1,9 @@
 .parcel-list-item {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  min-width: 280px;
-  max-width: 320px;
-  border: 1px solid var(--color-secondary);
+  width: 320px;
+  min-height: 240px;
+  border: 1px solid var(--color-secondary-darken);
   border-radius: 0.25rem;
   background: var(--background-secondary);
   &__header {
@@ -12,7 +11,7 @@
     justify-content: space-between;
     width: 100%;
     padding: 0.5rem;
-    border-bottom: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--color-secondary-darken);
     overflow: hidden;
   }
   &__title {
@@ -23,7 +22,7 @@
   }
   &__main {
     flex-grow: 1;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     font-size: 1rem;
     text-align: center;
   }
@@ -34,9 +33,5 @@
   &__route {
     margin-bottom: 0.5rem;
     font-size: 1.125em;
-  }
-  &__footer {
-    padding: 0.5rem 1rem;
-    border-top: 1px solid var(--color-secondary);
   }
 }

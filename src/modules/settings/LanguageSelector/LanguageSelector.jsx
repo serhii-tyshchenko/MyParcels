@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Localization } from 'contexts';
 import { updateSettings } from 'store/actions';
 import { languages } from 'assets/localization';
-import { UISelect } from 'components';
+import { UISelect } from 'modules/ui';
 
 import './LanguageSelector.scss';
 

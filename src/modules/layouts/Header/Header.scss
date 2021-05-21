@@ -29,7 +29,15 @@
       font-size: 1.5rem;
     }
   }
-  .theme-toggler {
-    font-size: 1.5rem;
+  &__right {
+    display: flex;
+    align-items: center;
+    .theme-toggler {
+      font-size: 1.5rem;
+    }
+    .language-selector {
+      margin-right: 0.5rem;
+      font-size: 1.25rem;
+    }
   }
 }
