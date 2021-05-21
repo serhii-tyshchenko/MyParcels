@@ -1,9 +1,10 @@
 import { BaseLayout } from 'modules/layouts';
-import { AddParcelForm } from 'modules/parcels';
+import { AddParcelForm, ParcelList } from 'modules/parcels';
 
 const Home = () => (
   <BaseLayout>
     <AddParcelForm />
+    <ParcelList />
   </BaseLayout>
 );
 

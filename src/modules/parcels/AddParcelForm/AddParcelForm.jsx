@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addParcel } from 'store/actions';
 import { UIButton, UIInput } from 'modules/ui';
 
@@ -8,20 +8,32 @@ import './AddParcelForm.scss';
 function AddParcelForm() {
   const [parcelNumber, setParcelNumber] = useState('');
   const dispatch = useDispatch();
+  const { parcels } = useSelector((state) => state);
 
-  function handleChange(evt: any) {
+  function handleChange(evt) {
     setParcelNumber(evt.target.value);
   }
-  function handleFormSubmit(evt: any) {
-    if (parcelNumber) {
-      evt.preventDefault();
-      dispatch(addParcel(parcelNumber));
-      setParcelNumber('');
+  function handleTrackParcelSubmit(evt) {
+    evt.preventDefault();
+    if (!parcelNumber) {
+      alert('Please enter tracking number!');
+      return;
     }
+    if (parcels.some(parcel => parcel.number === parcelNumber)) {
+      alert('Parcel already added!');
+      return
+    }
+    dispatch(addParcel(parcelNumber));
+    setParcelNumber('');
   }
 
   return (
-    <form action="" className="add-parcel-form" onSubmit={handleFormSubmit}>
+    <form
+      action=""
+      className="add-parcel-form"
+      onSubmit={handleTrackParcelSubmit}
+      noValidate
+    >
       <UIInput
         extraClassName="add-parcel-form__input"
         value={parcelNumber}

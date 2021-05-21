@@ -1,4 +1,5 @@
 import { api } from 'services';
+import { v4 as uuidv4 } from 'uuid';
 import {
   ADD_PARCEL,
   UPDATE_PARCEL,
@@ -10,6 +11,8 @@ import {
 function formatAPIResponse(response) {
   const { Number, CitySender, CityRecipient, Status } = response.data[0];
   return {
+    id: uuidv4(),
+    title: Number,
     number: Number,
     citySender: CitySender,
     cityRecipient: CityRecipient,
@@ -21,7 +24,7 @@ function actionAddParcel(data) {
   return { type: ADD_PARCEL, payload: formatAPIResponse(data) };
 }
 
-function isNumberNotFound(data) {
+function isParcelNotFound(data) {
   return data.data[0].StatusCode === '3';
 }
 
@@ -30,8 +33,8 @@ export const addParcel = (number) => (dispatch) => {
   api
     .getParcelInfo(number)
     .then((data) => {
-      if (isNumberNotFound(data)) {
-        alert('Number not found!');
+      if (isParcelNotFound(data)) {
+        alert('Parcel not found!');
         return;
       } else {
         dispatch(actionAddParcel(data));
@@ -41,8 +44,8 @@ export const addParcel = (number) => (dispatch) => {
     .finally(() => dispatch({ type: API_REQUEST_ENDED }));
 };
 
-export const updateParcel = (data) => (dispatch) => {
-  dispatch({ type: UPDATE_PARCEL, payload: data });
+export const updateParcel = (id, data) => (dispatch) => {
+  dispatch({ type: UPDATE_PARCEL, payload: { id, data } });
 };
 
 export const removeParcel = (id) => (dispatch) => {
