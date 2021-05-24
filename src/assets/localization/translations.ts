@@ -11,15 +11,21 @@ type Translation = {
 const translations: Translation = {
   en: {
     SIGN_IN: 'Sign In',
-    TRACK: 'Track',
+    TRACK_PARCEL: 'Track',
+    ENTER_TRACKING_NUMBER: 'Enter tracking number',
+    REMOVE_PARCEL: 'Remove parcel',
   },
   ua: {
     SIGN_IN: 'Увійти',
-    TRACK: 'Відстежити',
+    TRACK_PARCEL: 'Відстежити',
+    ENTER_TRACKING_NUMBER: 'Введіть номер посилки',
+    REMOVE_PARCEL: 'Видалити посилку',
   },
   ru: {
     SIGN_IN: 'Войти',
-    TRACK: 'Отследить',
+    TRACK_PARCEL: 'Отследить',
+    ENTER_TRACKING_NUMBER: 'Введите номер посылки',
+    REMOVE_PARCEL: 'Удалить посылку',
   },
 };
 

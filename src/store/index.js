@@ -11,9 +11,10 @@ const store = createStore(
   composeTools(applyMiddleware(thunk))
 );
 store.subscribe(() => {
-  const { parcels } = store.getState();
+  const { parcels, settings } = store.getState();
   ls.saveState({
     parcels,
+    settings,
   });
 });
 
