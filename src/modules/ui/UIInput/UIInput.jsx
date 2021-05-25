@@ -5,7 +5,7 @@ import './UIInput.scss';
 
 const UIInput = (props) => {
   const {
-    type, name, value, onChange, extraClassName, placeholder, required, autofocus, disabled,
+    type, name, value, onChange, onBlur, extraClassName, placeholder, required, autofocus, disabled,
   } = props;
   const componentClassName = extraClassName ? `ui-input ${extraClassName}` : 'ui-input';
 
@@ -16,6 +16,7 @@ const UIInput = (props) => {
       value={value}
       className={componentClassName}
       onChange={onChange}
+      onBlur={onBlur}
       placeholder={placeholder}
       required={required}
       autoFocus={autofocus}
@@ -28,6 +29,7 @@ const UIInput = (props) => {
 UIInput.defaultProps = {
   extraClassName: '',
   onChange: null,
+  onBlur: null,
   value: '',
   type: 'text',
   name: 'ui-input',
@@ -42,6 +44,7 @@ UIInput.propTypes = {
   name: PropTypes.string,
   extraClassName: PropTypes.string,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   value: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,

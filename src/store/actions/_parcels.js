@@ -1,25 +1,89 @@
 import { api } from 'services';
+import { v4 as uuidv4 } from 'uuid';
 import {
-  ADD_PARCEL,
-  UPDATE_PARCEL,
-  REMOVE_PARCEL,
-  API_REQUEST_STARTED,
-  API_REQUEST_ENDED,
-} from '../action-types';
+  actionApiRequestStarted,
+  actionApiRequestEnded,
+} from '../action-creators';
+import { ADD_PARCEL, UPDATE_PARCEL, REMOVE_PARCEL } from '../action-types';
+
+function formatAPIResponse(response) {
+  const data = response.data[0];
+  return {
+    number: data.Number,
+    citySender: data.CitySender,
+    cityRecipient: data.CityRecipient,
+    status: data.Status,
+    scheduledDeliveryDate: data.ScheduledDeliveryDate,
+    dateCreated: data.DateCreated,
+    weight: data.DocumentWeight,
+    statusCode: data.StatusCode,
+    warehouseRecipient: data.WarehouseRecipientNumber.toString(),
+    deliveryCost: Number(data.DocumentCost),
+  };
+}
+
+function isParcelNotFound(data) {
+  return data.data[0].StatusCode === '3';
+}
+
+function actionAddParcel(data) {
+  return {
+    type: ADD_PARCEL,
+    payload: { id: uuidv4(), title: 'New parcel', ...formatAPIResponse(data) },
+  };
+}
+
+function actionUpdateParcel(id, data) {
+  return { type: UPDATE_PARCEL, payload: { id, data } };
+}
+
+function actionCheckParcelStatus(id, data) {
+  return {
+    type: UPDATE_PARCEL,
+    payload: { id, data: formatAPIResponse(data) },
+  };
+}
+
+function actionRemoveParcel(id) {
+  return { type: REMOVE_PARCEL, payload: id };
+}
 
 export const addParcel = (number) => (dispatch) => {
-  dispatch({ type: API_REQUEST_STARTED });
+  dispatch(actionApiRequestStarted());
   api
     .getParcelInfo(number)
-    .then((data) => dispatch({ type: ADD_PARCEL, payload: data }))
-    .catch((error) => console.log('Error'))
-    .finally(() => dispatch({ type: API_REQUEST_ENDED }));
+    .then((data) => {
+      if (isParcelNotFound(data)) {
+        alert('Parcel not found!');
+        return;
+      } else {
+        dispatch(actionAddParcel(data));
+      }
+    })
+    .catch((error) => console.log('Error', error))
+    .finally(() => dispatch(actionApiRequestEnded()));
 };
 
-export const updateParcel = (data) => (dispatch) => {
-  dispatch({ type: UPDATE_PARCEL, payload: data });
+export const checkParcelStatus = (id, number) => (dispatch) => {
+  dispatch(actionApiRequestStarted());
+  api
+    .getParcelInfo(number)
+    .then((data) => {
+      if (isParcelNotFound(data)) {
+        alert('Parcel not found!');
+        return;
+      } else {
+        dispatch(actionCheckParcelStatus(id, data));
+      }
+    })
+    .catch((error) => console.log('Error', error))
+    .finally(() => dispatch(actionApiRequestEnded()));
+};
+
+export const updateParcel = (id, data) => (dispatch) => {
+  dispatch(actionUpdateParcel(id, data));
 };
 
 export const removeParcel = (id) => (dispatch) => {
-  dispatch({ type: REMOVE_PARCEL, payload: id });
+  dispatch(actionRemoveParcel(id));
 };

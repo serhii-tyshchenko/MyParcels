@@ -1,7 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useContext } from 'react';
 import { Localization } from 'contexts';
-import { useKeypress } from 'hooks';
 import { UIIconButton } from 'modules/ui';
 
 import './UIModal.scss';
@@ -12,7 +11,6 @@ const UIModal = ({
   const STR = useContext(Localization);
   const componentClassName = extraClassName ? `ui-modal ${extraClassName}` : 'ui-modal';
   const modalRoot = document.getElementById('modal-root');
-  useKeypress('Escape', onClose);
 
   return isVisible && createPortal(
     (

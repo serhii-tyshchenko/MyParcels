@@ -1,3 +1,4 @@
 export * from './ui';
 export * from './layouts';
-// export * from './settings';
+export * from './parcels';
+export * from './settings';
