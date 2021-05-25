@@ -20,6 +20,21 @@
     border: 0;
     cursor: pointer;
   }
+  &__check-btn {
+    margin-right: 0.5rem;
+    @keyframes rotating {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    &.loading::before {
+      animation: rotating linear 1000ms infinite;
+    }
+  }
+
   &__main {
     flex-grow: 1;
     padding: 1.5rem 1rem;
@@ -33,5 +48,11 @@
   &__route {
     margin-bottom: 0.5rem;
     font-size: 1.125em;
+  }
+  &__status {
+    margin-bottom: 1rem;
+  }
+  &__delivery-date {
+    font-size: 0.75em;
   }
 }
