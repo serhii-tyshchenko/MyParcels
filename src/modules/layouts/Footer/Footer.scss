@@ -9,24 +9,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-  }
-  &__logo {
-    margin-right: 1.25rem;
-    padding-left: 32px;
     color: var(--color-primary);
-    font: bold 1.5rem $font-secondary;
-    line-height: 1;
-    text-decoration: none;
-    background: url('~logo.svg') no-repeat left center / 24px;
-    @include for-size(mobile-large) {
-      margin-right: 0;
-      padding-left: 0;
-      background: none;
-    }
-  }
-  &__title {
-    @include for-size(tablet) {
-      font-size: 1.5rem;
-    }
   }
 }
