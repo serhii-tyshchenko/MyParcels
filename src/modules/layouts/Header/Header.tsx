@@ -1,10 +1,11 @@
 import { ThemeToggler, LanguageSelector } from 'modules/settings';
+
 import './Header.scss';
 
 const Header = () => (
   <header className="header">
     <div className="header__content wrapper">
-      <span className="header__logo">MyParcels</span>
+      <span className="header__logo">{process.env.REACT_APP_NAME}</span>
       <div className="header__right">
         <LanguageSelector />
         <ThemeToggler />

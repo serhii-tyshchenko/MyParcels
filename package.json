@@ -5,6 +5,10 @@
     "type": "git",
     "url": "https://github.com/serhii-tyshchenko/MyParcels"
   },
+  "author": {
+    "name": "Serhii Tyshchenko",
+    "url": "https://github.com/serhii-tyshchenko"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
