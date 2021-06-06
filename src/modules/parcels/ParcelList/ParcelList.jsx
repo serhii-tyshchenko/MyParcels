@@ -12,21 +12,17 @@ const ParcelList = () => {
   const dispatch = useDispatch();
   const STR = useContext(Localization);
 
-  function handleRemoveParcelClick(e) {
-    const parcelId = e.target.closest('li').id;
+  function handleRemoveParcelClick(parcelId) {
     dispatch(removeParcel(parcelId));
   }
 
-  function handleCheckParcelStatus(e) {
-    const parcelId = e.target.closest('li').id;
+  function handleCheckParcelStatus(parcelId) {
     const { number: parcelNumer } = parcels.find(parcel => parcel.id === parcelId);
     dispatch(checkParcelStatus(parcelId, parcelNumer));
   }
 
-  function handleParcelTitleBlur(e) {
-    const parcelId = e.target.closest('li').id;
-    const newParcelTitle = e.target.value;
-    dispatch(updateParcel(parcelId, { title: newParcelTitle }));
+  function handleParcelTitleBlur(parcelId, title) {
+    dispatch(updateParcel(parcelId, { title }));
   }
 
   return (

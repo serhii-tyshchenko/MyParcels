@@ -7,26 +7,39 @@ const ParcelListItem = (props) => {
   const { data, onRemoveParcelClick, onParcelTitleBlur, onCheckParcelStatusClick, STR } = props;
   const [parcelTitle, setParcelTitle] = useState(data.title);
   const [isApiLoading, setApiLoading] = useState(false);
+
   useEffect(() => {
     setApiLoading(false);
   }, [data]);
 
   const checkStatusBtnClass = isApiLoading ? 'parcel-list-item__check-btn loading' : 'parcel-list-item__check-btn';
 
+  function getParcelId(ev) {
+    return ev.target.closest('li').id;
+  }
   function handleParcelTitleChange(ev) {
     setParcelTitle(ev.target.value);
   }
+  function handleParcelTitleBlur(ev) {
+    const parcelId = getParcelId(ev);
+    onParcelTitleBlur(parcelId, parcelTitle);
+  }
   function handleParcelStatusCheckClick(ev) {
     setApiLoading(true);
-    onCheckParcelStatusClick(ev);
+    const parcelId = getParcelId(ev);
+    onCheckParcelStatusClick(parcelId);
+  }
+  function handleRemoveParcelClick(ev) {
+    const parcelId = getParcelId(ev);
+    onRemoveParcelClick(parcelId);
   }
 
   return (
     <li id={data.id} className="parcel-list-item">
       <header className="parcel-list-item__header">
-        <UIInput extraClassName="parcel-list-item__title" value={parcelTitle} onChange={handleParcelTitleChange} onBlur={onParcelTitleBlur} />
+        <UIInput extraClassName="parcel-list-item__title" value={parcelTitle} onChange={handleParcelTitleChange} onBlur={handleParcelTitleBlur} />
         <UIIconButton onClick={handleParcelStatusCheckClick} extraClassName={checkStatusBtnClass} title={STR.CHECK_PARCEL_STATUS} icon="arrows-cw" />
-        <UIIconButton onClick={onRemoveParcelClick} extraClassName="parcel-list-item__remove-btn" title={STR.REMOVE_PARCEL} icon="trash" />
+        <UIIconButton onClick={handleRemoveParcelClick} extraClassName="parcel-list-item__remove-btn" title={STR.REMOVE_PARCEL} icon="trash" />
       </header>
       <main className="parcel-list-item__main">
         <h4 className="parcel-list-item__number">{data.number}</h4>
