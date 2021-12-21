@@ -7,7 +7,7 @@ const ThemeToggler = () => {
   const { theme } = useSelector((state) => state.settings);
   const btnIcon = theme === 'light' ? 'moon' : 'sun';
 
-  function handleThemeChange() {
+  const handleThemeChange = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     dispatch(updateSettings({ theme: newTheme }));
   }

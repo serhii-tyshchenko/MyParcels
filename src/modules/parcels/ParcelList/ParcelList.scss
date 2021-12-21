@@ -4,4 +4,10 @@
   gap: 2rem 1.5rem;
   justify-content: space-evenly;
   list-style-type: none;
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+  &__no-parcels {
+    text-align: center;
+  }
 }

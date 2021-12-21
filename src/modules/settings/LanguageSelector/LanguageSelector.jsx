@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Localization } from 'contexts';
 import { updateSettings } from 'store/actions';
-import { languages } from 'assets/localization';
+import { languages } from 'constants/languages';
 import { UISelect } from 'modules/ui';
 
 import './LanguageSelector.scss';
@@ -12,10 +12,7 @@ const LanguageSelector = () => {
   const STR = useContext(Localization);
   const { language: currLang } = useSelector((state) => state.settings);
 
-  function handleLanguageChange(evt) {
-    const language = evt.target.value;
-    dispatch(updateSettings({ language }));
-  }
+  const handleLanguageChange = (evt) => dispatch(updateSettings({ language: evt.target.value }))
 
   return (
     <UISelect
