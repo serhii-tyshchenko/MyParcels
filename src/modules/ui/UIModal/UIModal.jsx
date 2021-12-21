@@ -24,7 +24,7 @@ const UIModal = ({
           <div className="ui-modal__header">
             <h4 id="ui-modal-title" className="ui-modal__title">{title}</h4>
             <UIIconButton
-              extraClassName="ui-modal__btn-close"
+              className="ui-modal__btn-close"
               icon="cancel"
               onClick={onClose}
               title={STR.CLOSE}

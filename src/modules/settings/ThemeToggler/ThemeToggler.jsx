@@ -16,7 +16,7 @@ const ThemeToggler = () => {
     <UIIconButton
       icon={btnIcon}
       onClick={handleThemeChange}
-      extraClassName="theme-toggler"
+      className="theme-toggler"
     />
   );
 };

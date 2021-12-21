@@ -6,6 +6,8 @@ import { UIInput, UIIconButton } from 'modules/ui';
 
 import './AddParcelForm.scss';
 
+const NAME_SPACE = 'add-parcel-form';
+
 const AddParcelForm = () => {
   const STR = useContext(Localization);
   const dispatch = useDispatch();
@@ -32,12 +34,12 @@ const AddParcelForm = () => {
   return (
     <form
       action=""
-      className="add-parcel-form"
+      className={NAME_SPACE}
       onSubmit={handleTrackParcelSubmit}
       noValidate
     >
       <UIInput
-        extraClassName="add-parcel-form__input"
+        extraClassName={`${NAME_SPACE}__input`}
         value={parcelNumber}
         onChange={handleChange}
         placeholder={STR.ENTER_TRACKING_NUMBER}
@@ -46,7 +48,7 @@ const AddParcelForm = () => {
       <UIIconButton
         type="submit"
         icon="search"
-        extraClassName="add-parcel-form__btn"
+        className={`${NAME_SPACE}__btn`}
         text={STR.TRACK_PARCEL}
       />
     </form>

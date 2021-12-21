@@ -1,27 +1,25 @@
 import PropTypes from 'prop-types';
+import { myClassnames } from 'utils';
 import { createPortal } from 'react-dom';
 import { UIIconButton } from 'modules';
 
 import './UINotification.scss';
 
 const titles = {
+  info: 'Information',
   error: 'Error',
   warning: 'Warning',
   success: 'Succes',
 };
+
+const NAME_SPACE = 'ui-notification';
 
 const UINotification = (props) => {
   const {
     message, type, extraClassName, isVisible, onCloseClick, autoclose,
   } = props;
   const modalRoot = document.getElementById('modal-root');
-  let componentClassName = 'ui-notification';
-  if (type) {
-    componentClassName += ` ui-notification--${type}`;
-  }
-  if (extraClassName) {
-    componentClassName += ` ${extraClassName}`;
-  }
+  const componentClassName = myClassnames(NAME_SPACE, `${NAME_SPACE}--${type}`, extraClassName);
 
   const timer = (autoclose && isVisible) ? setTimeout(() => onCloseClick(), 3000) : null;
 
@@ -32,15 +30,15 @@ const UINotification = (props) => {
 
   return isVisible ? createPortal((
     <div className={componentClassName}>
-      <main className="ui-notification__content">
-        {titles[type] && (<h4 className="ui-notification__title">{titles[type]}</h4>)}
-        <span className="ui-notification__message">{message}</span>
+      <main className={`${NAME_SPACE}__content`}>
+        <h4 className={`${NAME_SPACE}__title`}>{titles[type]}</h4>
+        <span className={`${NAME_SPACE}__message`}>{message}</span>
       </main>
       <UIIconButton
         icon="cancel"
         onClick={handleCloseClick}
         title="Close"
-        extraClassName="ui-notification__close-btn"
+        className={`${NAME_SPACE}__close-btn`}
       />
     </div>
   ), modalRoot) : null;

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { UIIconButton, UIInput } from 'modules/ui';
+import { myClassnames } from 'utils';
+
 import { getParcelId } from './utils';
-import { myClassnames } from 'utils/myClassnames';
 
 import './ParcelListItem.scss';
 
@@ -15,7 +16,7 @@ const ParcelListItem = (props) => {
 
   useEffect(() => setIsApiLoading(false), [data]);
 
-  const checkStatusBtnClass = myClassnames(`${NAME_SPACE}__check-btn`, { loading: isApiLoading })
+  const checkStatusBtnClass = myClassnames(`${NAME_SPACE}__check-btn`, { loading: isApiLoading });
 
   const handleParcelTitleChange = (ev) => setParcelTitle(ev.target.value);
 
@@ -31,8 +32,8 @@ const ParcelListItem = (props) => {
     <li id={id} className={NAME_SPACE}>
       <header className={`${NAME_SPACE}__header`}>
         <UIInput extraClassName={`${NAME_SPACE}__title`} value={parcelTitle} onChange={handleParcelTitleChange} onBlur={handleParcelTitleBlur} />
-        <UIIconButton onClick={handleParcelStatusCheckClick} extraClassName={checkStatusBtnClass} title={STR.CHECK_PARCEL_STATUS} icon="arrows-cw" />
-        <UIIconButton onClick={handleRemoveParcelClick} extraClassName={`${NAME_SPACE}__remove-btn`} title={STR.REMOVE_PARCEL} icon="trash" />
+        <UIIconButton onClick={handleParcelStatusCheckClick} className={checkStatusBtnClass} title={STR.CHECK_PARCEL_STATUS} icon="arrows-cw" />
+        <UIIconButton onClick={handleRemoveParcelClick} className={`${NAME_SPACE}__remove-btn`} title={STR.REMOVE_PARCEL} icon="trash" />
       </header>
       <main className={`${NAME_SPACE}__main`}>
         <h4 className={`${NAME_SPACE}__number`}>{number}</h4>
