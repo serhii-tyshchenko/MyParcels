@@ -25,7 +25,6 @@ const ParcelList = () => {
 
   return (
     <>
-      <h3 className={`${NAME_SPACE}__title`}>{STR.YOUR_PARCELS}</h3>
       {parcels.length
         ? (<ul className={NAME_SPACE}>
           {parcels.map((parcel) =>
