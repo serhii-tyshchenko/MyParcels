@@ -2,20 +2,19 @@ import { useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addParcel } from 'store/actions';
 import { Localization } from 'contexts';
-import { UIButton, UIInput } from 'modules/ui';
+import { UIInput, UIIconButton } from 'modules/ui';
 
 import './AddParcelForm.scss';
 
-function AddParcelForm() {
+const AddParcelForm = () => {
   const STR = useContext(Localization);
   const dispatch = useDispatch();
   const { parcels } = useSelector((state) => state);
   const [parcelNumber, setParcelNumber] = useState('');
 
-  function handleChange(evt) {
-    setParcelNumber(evt.target.value);
-  }
-  function handleTrackParcelSubmit(evt) {
+  const handleChange = (evt) => setParcelNumber(evt.target.value);
+
+  const handleTrackParcelSubmit = (evt) => {
     evt.preventDefault();
     if (!parcelNumber) {
       alert('Please enter tracking number!');
@@ -44,8 +43,9 @@ function AddParcelForm() {
         placeholder={STR.ENTER_TRACKING_NUMBER}
         required
       />
-      <UIButton
+      <UIIconButton
         type="submit"
+        icon="search"
         extraClassName="add-parcel-form__btn"
         text={STR.TRACK_PARCEL}
       />

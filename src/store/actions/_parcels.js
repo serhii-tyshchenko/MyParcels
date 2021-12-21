@@ -6,7 +6,7 @@ import {
 } from '../action-creators';
 import { ADD_PARCEL, UPDATE_PARCEL, REMOVE_PARCEL } from '../action-types';
 
-function formatAPIResponse(response) {
+const formatAPIResponse = (response) => {
   const data = response.data[0];
   return {
     number: data.Number,
@@ -20,33 +20,26 @@ function formatAPIResponse(response) {
     warehouseRecipient: data.WarehouseRecipientNumber.toString(),
     deliveryCost: Number(data.DocumentCost),
   };
-}
+};
 
-function isParcelNotFound(data) {
-  return data.data[0].StatusCode === '3';
-}
+const isParcelNotFound = (data) => data.data[0].StatusCode === '3';
 
-function actionAddParcel(data) {
-  return {
-    type: ADD_PARCEL,
-    payload: { id: uuidv4(), title: 'New parcel', ...formatAPIResponse(data) },
-  };
-}
+const actionAddParcel = (data) => ({
+  type: ADD_PARCEL,
+  payload: { id: uuidv4(), title: 'New parcel', ...formatAPIResponse(data) },
+});
 
-function actionUpdateParcel(id, data) {
-  return { type: UPDATE_PARCEL, payload: { id, data } };
-}
+const actionUpdateParcel = (id, data) => ({
+  type: UPDATE_PARCEL,
+  payload: { id, data },
+});
 
-function actionCheckParcelStatus(id, data) {
-  return {
-    type: UPDATE_PARCEL,
-    payload: { id, data: formatAPIResponse(data) },
-  };
-}
+const actionCheckParcelStatus = (id, data) => ({
+  type: UPDATE_PARCEL,
+  payload: { id, data: formatAPIResponse(data) },
+});
 
-function actionRemoveParcel(id) {
-  return { type: REMOVE_PARCEL, payload: id };
-}
+const actionRemoveParcel = (id) => ({ type: REMOVE_PARCEL, payload: id });
 
 export const addParcel = (number) => (dispatch) => {
   dispatch(actionApiRequestStarted());

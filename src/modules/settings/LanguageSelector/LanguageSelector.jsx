@@ -12,10 +12,7 @@ const LanguageSelector = () => {
   const STR = useContext(Localization);
   const { language: currLang } = useSelector((state) => state.settings);
 
-  function handleLanguageChange(evt) {
-    const language = evt.target.value;
-    dispatch(updateSettings({ language }));
-  }
+  const handleLanguageChange = (evt) => dispatch(updateSettings({ language: evt.target.value }))
 
   return (
     <UISelect

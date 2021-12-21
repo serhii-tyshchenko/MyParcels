@@ -10,15 +10,13 @@ const UITabs = (props) => {
   const tabsClassName = `ui-tabs ${extraClassName}`;
   const [activeTabIndex, setActiveTabIndex] = useState(activeTab);
 
-  function handleTabClick(e) {
+  const handleTabClick = (e) => {
     setActiveTabIndex(labels.indexOf(e.target.value));
     if (onTabClick) {
       onTabClick();
     }
   }
-  function setTabClass(index) {
-    return index === activeTabIndex ? 'ui-tabs__item ui-tabs__item--active' : 'ui-tabs__item';
-  }
+  const setTabClass = (index) => index === activeTabIndex ? 'ui-tabs__item ui-tabs__item--active' : 'ui-tabs__item';
 
   return (
     <div className={tabsClassName}>

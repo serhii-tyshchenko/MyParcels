@@ -25,7 +25,7 @@ const UINotification = (props) => {
 
   const timer = (autoclose && isVisible) ? setTimeout(() => onCloseClick(), 3000) : null;
 
-  function handleCloseClick() {
+  const handleCloseClick = () => {
     clearTimeout(timer);
     onCloseClick();
   }

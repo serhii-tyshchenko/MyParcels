@@ -15,6 +15,8 @@ const translations: Translation = {
     ENTER_TRACKING_NUMBER: 'Enter tracking number',
     REMOVE_PARCEL: 'Remove parcel',
     CHECK_PARCEL_STATUS: 'Check parcel status',
+    YOUR_PARCELS: 'Your parcels',
+    NO_PARCELS: 'You have no parcels',
   },
   ua: {
     SIGN_IN: 'Увійти',
@@ -22,6 +24,8 @@ const translations: Translation = {
     ENTER_TRACKING_NUMBER: 'Введіть номер посилки',
     REMOVE_PARCEL: 'Видалити посилку',
     CHECK_PARCEL_STATUS: 'Перевірити статус посилки',
+    YOUR_PARCELS: 'Ваші посилки',
+    NO_PARCELS: 'У вас немає посилок',
   },
   ru: {
     SIGN_IN: 'Войти',
@@ -29,6 +33,8 @@ const translations: Translation = {
     ENTER_TRACKING_NUMBER: 'Введите номер посылки',
     REMOVE_PARCEL: 'Удалить посылку',
     CHECK_PARCEL_STATUS: 'Проверить статус посылки',
+    YOUR_PARCELS: 'Ваши посылки',
+    NO_PARCELS: 'У вас нет посылок',
   },
 };
 
