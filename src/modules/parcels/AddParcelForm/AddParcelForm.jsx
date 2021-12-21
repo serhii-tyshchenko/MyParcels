@@ -39,7 +39,7 @@ const AddParcelForm = () => {
       noValidate
     >
       <UIInput
-        extraClassName={`${NAME_SPACE}__input`}
+        className={`${NAME_SPACE}__input`}
         value={parcelNumber}
         onChange={handleChange}
         placeholder={STR.ENTER_TRACKING_NUMBER}

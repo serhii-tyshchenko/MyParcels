@@ -1,20 +1,24 @@
 import { createPortal } from 'react-dom';
 import { useContext } from 'react';
 import { Localization } from 'contexts';
+import { myClassnames } from 'utils';
 import { UIIconButton } from 'modules/ui';
 
 import './UIModal.scss';
 
+const NAME_SPACE = 'ui-modal';
+
 const UIModal = ({
-  title, isVisible, onClose, children, extraClassName,
+  title, isVisible, onClose, children, className,
 }) => {
   const STR = useContext(Localization);
-  const componentClassName = extraClassName ? `ui-modal ${extraClassName}` : 'ui-modal';
+  const componentClassName = myClassnames(NAME_SPACE, className);
+
   const modalRoot = document.getElementById('modal-root');
 
   return isVisible && createPortal(
     (
-      <div className="ui-modal__backdrop">
+      <div className={`${NAME_SPACE}__backdrop`}>
         <div
           role="dialog"
           aria-labelledby="ui-modal-title"
@@ -22,15 +26,15 @@ const UIModal = ({
           className={componentClassName}
         >
           <div className="ui-modal__header">
-            <h4 id="ui-modal-title" className="ui-modal__title">{title}</h4>
+            <h4 id="ui-modal-title" className={`${NAME_SPACE}__title`}>{title}</h4>
             <UIIconButton
-              className="ui-modal__btn-close"
+              className={`${NAME_SPACE}__btn-close`}
               icon="cancel"
               onClick={onClose}
               title={STR.CLOSE}
             />
           </div>
-          <div className="ui-modal__content">{children}</div>
+          <div className={`${NAME_SPACE}__content`}>{children}</div>
         </div>
       </div>
     ),
@@ -41,6 +45,7 @@ const UIModal = ({
 UIModal.defaultProps = {
   title: 'Modal title',
   isVisible: false,
+  className: '',
 };
 
 export { UIModal };
