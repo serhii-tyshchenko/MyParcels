@@ -23,11 +23,6 @@
     text-decoration: none;
     background: url('~logo.svg') no-repeat left center / 24px;
     order: 1;
-    @include for-size(mobile-large) {
-      margin-right: 0;
-      padding-left: 0;
-      background: none;
-    }
   }
   &__title {
     @include for-size(tablet) {
