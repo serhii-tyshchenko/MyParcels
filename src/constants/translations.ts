@@ -1,21 +1,14 @@
-const languages: Array<{ value: string; label: string }> = [
-  { value: 'en', label: 'EN' },
-  { value: 'ua', label: 'UA' },
-  { value: 'ru', label: 'RU' },
-];
-
 type Translation = {
   [key: string]: { [key: string]: string };
 };
 
-const translations: Translation = {
+export const translations: Translation = {
   en: {
     SIGN_IN: 'Sign In',
     TRACK_PARCEL: 'Track',
     ENTER_TRACKING_NUMBER: 'Enter tracking number',
     REMOVE_PARCEL: 'Remove parcel',
     CHECK_PARCEL_STATUS: 'Check parcel status',
-    YOUR_PARCELS: 'Your parcels',
     NO_PARCELS: 'You have no parcels',
   },
   ua: {
@@ -24,7 +17,6 @@ const translations: Translation = {
     ENTER_TRACKING_NUMBER: 'Введіть номер посилки',
     REMOVE_PARCEL: 'Видалити посилку',
     CHECK_PARCEL_STATUS: 'Перевірити статус посилки',
-    YOUR_PARCELS: 'Ваші посилки',
     NO_PARCELS: 'У вас немає посилок',
   },
   ru: {
@@ -33,9 +25,6 @@ const translations: Translation = {
     ENTER_TRACKING_NUMBER: 'Введите номер посылки',
     REMOVE_PARCEL: 'Удалить посылку',
     CHECK_PARCEL_STATUS: 'Проверить статус посылки',
-    YOUR_PARCELS: 'Ваши посылки',
     NO_PARCELS: 'У вас нет посылок',
   },
 };
-
-export { translations, languages };
