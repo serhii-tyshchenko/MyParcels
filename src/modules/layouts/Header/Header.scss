@@ -2,13 +2,17 @@
 @import '~styles/mixins';
 
 .header {
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   background-color: var(--background-secondary);
   &__content {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
+    @include for-size(tablet) {
+      flex-wrap: wrap;
+    }
   }
   &__logo {
     margin-right: 1.25rem;
@@ -18,6 +22,7 @@
     line-height: 1;
     text-decoration: none;
     background: url('~logo.svg') no-repeat left center / 24px;
+    order: 1;
     @include for-size(mobile-large) {
       margin-right: 0;
       padding-left: 0;
@@ -29,9 +34,19 @@
       font-size: 1.5rem;
     }
   }
+  &__middle {
+    order: 2;
+    flex-grow: 1;
+    @include for-size(tablet) {
+      order: 3;
+      width: 100%;
+      padding: 2rem 0 1rem;
+    }
+  }
   &__right {
     display: flex;
     align-items: center;
+    order: 3;
     .theme-toggler {
       width: 40px;
       height: 40px;
@@ -48,6 +63,9 @@
       &:hover {
         background: var(--background-secondary-hover);
       }
+    }
+    @include for-size(tablet) {
+      order: 2;
     }
   }
 }
