@@ -16,7 +16,7 @@ const UIIconButton = (props: UIIconButtonProps) => {
   const {
     icon = 'trash',
     onClick,
-    className,
+    className = '',
     title = 'Click me',
     type = 'button',
   } = props;
