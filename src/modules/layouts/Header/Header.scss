@@ -9,7 +9,7 @@
 
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
+    padding: 0 1rem;
     @include for-size(tablet) {
       flex-wrap: wrap;
     }

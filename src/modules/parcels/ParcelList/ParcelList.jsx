@@ -21,7 +21,7 @@ const ParcelList = () => {
     dispatch(checkParcelStatus(parcelId, parcelNumer));
   }
 
-  const handleParcelTitleBlur = (parcelId, title) => dispatch(updateParcel(parcelId, { title }));
+  const onParcelUpdate = (parcelId, title) => dispatch(updateParcel(parcelId, { title }));
 
   return (
     <>
@@ -35,7 +35,7 @@ const ParcelList = () => {
               isApiLoading={isApiLoading}
               onRemoveParcelClick={handleRemoveParcelClick}
               onCheckParcelStatusClick={handleCheckParcelStatus}
-              onParcelTitleBlur={handleParcelTitleBlur}
+              onParcelUpdate={onParcelUpdate}
             />)}
         </ul>)
         : (<div className={`${NAME_SPACE}__no-parcels`}>{STR.NO_PARCELS}</div>)}
