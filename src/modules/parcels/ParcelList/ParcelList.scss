@@ -1,11 +1,14 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
 .parcel-list {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem 1.5rem;
   justify-content: space-evenly;
   list-style-type: none;
-  &__title {
-    margin-bottom: 1.5rem;
+  @include for-size(tablet) {
+    gap: 1rem;
   }
   &__no-parcels {
     text-align: center;

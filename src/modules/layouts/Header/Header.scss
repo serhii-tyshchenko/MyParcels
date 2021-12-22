@@ -9,7 +9,7 @@
 
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
+    padding: 0 1rem;
     @include for-size(tablet) {
       flex-wrap: wrap;
     }
@@ -23,11 +23,6 @@
     text-decoration: none;
     background: url('~logo.svg') no-repeat left center / 24px;
     order: 1;
-    @include for-size(mobile-large) {
-      margin-right: 0;
-      padding-left: 0;
-      background: none;
-    }
   }
   &__title {
     @include for-size(tablet) {

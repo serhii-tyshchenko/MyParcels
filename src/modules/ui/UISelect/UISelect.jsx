@@ -1,29 +1,32 @@
 import PropTypes from 'prop-types';
+import { myClassnames } from 'utils';
 
 import './UISelect.scss';
 
+const NAME_SPACE = 'ui-select';
+
 const UISelect = (props) => {
   const {
-    value, onChange, options, extraClassName, title, required,
+    value, onChange, options, className, title, required,
   } = props;
-  const className = extraClassName ? `ui-select ${extraClassName}` : 'ui-select';
+  const componentClassName = myClassnames(NAME_SPACE, className);
 
   return (
     <select
       onChange={onChange}
       value={value}
       required={required}
-      className={className}
+      className={componentClassName}
       title={title}
     >
-      {options.map((option) => (
+      {options.map(({ value, disabled, label }) => (
         <option
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-          className="ui-select__option"
+          key={value}
+          value={value}
+          disabled={disabled}
+          className={`${NAME_SPACE}__option`}
         >
-          {option.label}
+          {label}
         </option>
       ))}
     </select>
@@ -31,7 +34,7 @@ const UISelect = (props) => {
 };
 
 UISelect.defaultProps = {
-  extraClassName: '',
+  className: '',
   onChange: null,
   value: '',
   title: 'Select me',
@@ -53,7 +56,7 @@ UISelect.defaultProps = {
 };
 
 UISelect.propTypes = {
-  extraClassName: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func,
   value: PropTypes.string,
   title: PropTypes.string,

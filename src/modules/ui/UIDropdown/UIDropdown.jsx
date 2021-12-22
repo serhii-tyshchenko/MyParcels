@@ -1,19 +1,26 @@
 import PropTypes from 'prop-types';
-
+import { myClassnames } from 'utils';
 import { UIIconButton } from 'modules/ui';
 
 import './UIDropdown.scss';
+
+const NAME_SPACE = 'ui-dropdown';
 
 const UIDropdown = ({
   children, onToggle, extraClassName, isOpened,
 }) => {
   const menuTogglerIcon = isOpened ? 'cancel' : 'ellipsis-vert';
-  const componentClassName = extraClassName ? `ui-dropdown ${extraClassName}` : 'ui-dropdown';
+  const componentClassName = myClassnames(NAME_SPACE, extraClassName);
+
   return (
     <div className={componentClassName}>
-      <UIIconButton onClick={onToggle} icon={menuTogglerIcon} extraClassName="ui-dropdown__toggler" />
+      <UIIconButton
+        onClick={onToggle}
+        icon={menuTogglerIcon}
+        className={`${NAME_SPACE}__toggler`}
+      />
       {isOpened && (
-        <div className="ui-dropdown__container">
+        <div className={`${NAME_SPACE}__container`}>
           {children}
         </div>
       )}

@@ -19,7 +19,7 @@ const LanguageSelector = () => {
       value={currLang}
       onChange={handleLanguageChange}
       options={languages}
-      extraClassName="language-selector"
+      className="language-selector"
       title={STR.TOGGLE_LANGUAGE}
     />
   );

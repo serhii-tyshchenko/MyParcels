@@ -1,23 +1,39 @@
-/* eslint-disable react/button-has-type */
+import { myClassnames } from 'utils';
+
 import './UIIconButton.scss';
 
 interface UIIconButtonProps {
-  onClick?: () => void,
-  extraClassName?: string,
-  icon?: string,
-  type?: "button" | "submit" | "reset",
-  title?: string
+  onClick?: () => void;
+  className?: string;
+  icon?: string;
+  type?: 'button' | 'submit' | 'reset';
+  title?: string;
 }
 
-const UIIconButton = (props:UIIconButtonProps) => {
+const NAME_SPACE = 'ui-icon-button';
+
+const UIIconButton = (props: UIIconButtonProps) => {
   const {
-    icon = '', onClick, extraClassName, title = 'Click me', type = 'button',
-  }:UIIconButtonProps = props;
-  const componentClassName = `ui-icon-button icon-${icon} ${extraClassName}`;
+    icon = 'trash',
+    onClick,
+    className = '',
+    title = 'Click me',
+    type = 'button',
+  } = props;
+  const componentClassName = myClassnames(
+    NAME_SPACE,
+    `icon-${icon}`,
+    className
+  );
 
   return (
-    <button type={type} className={componentClassName} onClick={onClick} title={title}>
-      <span className="ui-icon-button__text">{title}</span>
+    <button
+      type={type}
+      className={componentClassName}
+      onClick={onClick}
+      title={title}
+    >
+      <span className={`${NAME_SPACE}__text`}>{title}</span>
     </button>
   );
 };

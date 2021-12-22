@@ -1,27 +1,43 @@
+import { myClassnames } from 'utils';
+
 import './UIButton.scss';
 
 interface UIButtonProps {
   onClick?: () => void;
-  extraClassName?: string;
+  className?: string;
   type?: 'button' | 'submit' | 'reset';
   btnType?: 'primary' | 'secondary' | 'action';
-  size?: 'normal' | 'large' | 'large';
+  size?: 'small' | 'normal' | 'large';
   text: string;
+  disabled?: boolean;
 }
+
+const NAME_SPACE = 'ui-button';
 
 const UIButton = (props: UIButtonProps) => {
   const {
     onClick,
-    extraClassName,
+    className = '',
     type = 'button',
     btnType = 'primary',
     size = 'normal',
     text = 'Button',
+    disabled = false,
   }: UIButtonProps = props;
-  const componentClassName = `ui-button ui-button--${btnType} ui-button--${size} ${extraClassName}`;
+  const componentClassName = myClassnames(
+    NAME_SPACE,
+    `${NAME_SPACE}--${btnType}`,
+    `${NAME_SPACE}--${size}`,
+    className
+  );
 
   return (
-    <button type={type} className={componentClassName} onClick={onClick}>
+    <button
+      type={type}
+      className={componentClassName}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {text}
     </button>
   );
