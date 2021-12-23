@@ -239,6 +239,12 @@
       "css": "arrows-cw",
       "code": 59418,
       "src": "fontawesome"
+    },
+    {
+      "uid": "04ff8d6592fe548b332b27ed87ce397a",
+      "css": "box",
+      "code": 61831,
+      "src": "fontawesome"
     }
   ]
 }
