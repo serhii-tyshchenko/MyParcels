@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/MyParcels/static/css/main.3f49540c.chunk.css",
-    "main.js": "/MyParcels/static/js/main.864e0624.chunk.js",
-    "main.js.map": "/MyParcels/static/js/main.864e0624.chunk.js.map",
+    "main.css": "/MyParcels/static/css/main.3b5f6516.chunk.css",
+    "main.js": "/MyParcels/static/js/main.27ed5c9f.chunk.js",
+    "main.js.map": "/MyParcels/static/js/main.27ed5c9f.chunk.js.map",
     "runtime-main.js": "/MyParcels/static/js/runtime-main.8b961258.js",
     "runtime-main.js.map": "/MyParcels/static/js/runtime-main.8b961258.js.map",
     "static/js/2.d756a691.chunk.js": "/MyParcels/static/js/2.d756a691.chunk.js",
@@ -10,15 +10,15 @@
     "static/js/3.a9839aae.chunk.js": "/MyParcels/static/js/3.a9839aae.chunk.js",
     "static/js/3.a9839aae.chunk.js.map": "/MyParcels/static/js/3.a9839aae.chunk.js.map",
     "index.html": "/MyParcels/index.html",
-    "static/css/main.3f49540c.chunk.css.map": "/MyParcels/static/css/main.3f49540c.chunk.css.map",
+    "static/css/main.3b5f6516.chunk.css.map": "/MyParcels/static/css/main.3b5f6516.chunk.css.map",
     "static/js/2.d756a691.chunk.js.LICENSE.txt": "/MyParcels/static/js/2.d756a691.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/MyParcels/static/media/fontello.3da808f5.ttf",
+    "static/media/index.scss": "/MyParcels/static/media/fontello.0eb510d7.ttf",
     "static/media/Header.scss": "/MyParcels/static/media/logo.3f70f6c1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8b961258.js",
     "static/js/2.d756a691.chunk.js",
-    "static/css/main.3f49540c.chunk.css",
-    "static/js/main.864e0624.chunk.js"
+    "static/css/main.3b5f6516.chunk.css",
+    "static/js/main.27ed5c9f.chunk.js"
   ]
 }
