@@ -22,11 +22,18 @@ const formatAPIResponse = (response) => {
   };
 };
 
+const createNewParcel = (data) => ({
+  id: uuidv4(),
+  title: 'New parcel',
+  isArchived: false,
+  ...formatAPIResponse(data),
+});
+
 const isParcelNotFound = (data) => data.data[0].StatusCode === '3';
 
 const actionAddParcel = (data) => ({
   type: ADD_PARCEL,
-  payload: { id: uuidv4(), title: 'New parcel', ...formatAPIResponse(data) },
+  payload: createNewParcel(data),
 });
 
 const actionUpdateParcel = (id, data) => ({

@@ -15,6 +15,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 0.5rem;
     border-bottom: 1px solid var(--color-secondary-darken);
@@ -39,6 +40,9 @@
     &.loading::before {
       animation: rotating linear 1000ms infinite;
     }
+  }
+  &__archive-btn {
+    margin-right: 0.5rem;
   }
 
   &__main {
