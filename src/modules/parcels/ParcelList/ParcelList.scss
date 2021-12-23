@@ -10,6 +10,15 @@
   @include for-size(tablet) {
     gap: 1rem;
   }
+  &__show-archived {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    & > span {
+      margin-right: 0.5rem;
+    }
+  }
   &__no-parcels {
     text-align: center;
   }

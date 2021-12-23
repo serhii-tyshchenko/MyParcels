@@ -29,10 +29,10 @@
   &:hover &__checkmark::before {
     content: '\e801';
   }
-  &__inp {
+  &__input {
     appearance: none;
   }
-  &__inp:checked + &__checkmark::before {
+  &__input:checked + &__checkmark::before {
     content: '\e801';
   }
 }
