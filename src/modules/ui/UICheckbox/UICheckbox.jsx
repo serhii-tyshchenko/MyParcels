@@ -1,40 +1,54 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
+import { myClassnames } from 'utils';
 
 import './UICheckbox.scss';
 
+const NAME_SPACE = 'ui-checkbox';
+
 const UICheckbox = (props) => {
   const {
-    id, name, onChange, extraClassName, title, checked,
+    id, name, onChange, className, title, checked, disabled
   } = props;
-  const componentClassName = extraClassName ? `ui-checkbox ${extraClassName}` : 'ui-checkbox';
+  const componentClassName = myClassnames(NAME_SPACE, className);
 
   return (
     <>
       <label className={componentClassName}>
-        <input type="checkbox" name={name} id={id} className="ui-checkbox__inp" title={title} onChange={onChange} checked={checked} />
-        <span className="ui-checkbox__checkmark" />
+        <input
+          type="checkbox"
+          name={name}
+          id={id}
+          className={`${NAME_SPACE}__input`}
+          title={title}
+          onChange={onChange}
+          checked={checked}
+          disabled={disabled}
+        />
+        <span className={`${NAME_SPACE}__checkmark`} />
       </label>
     </>
   );
 };
 
 UICheckbox.defaultProps = {
-  extraClassName: '',
+  className: '',
   title: '',
   onChange: null,
   name: 'ui-checkbox',
   id: '',
   checked: false,
+  disabled: false,
 };
 
 UICheckbox.propTypes = {
   onChange: PropTypes.func,
-  extraClassName: PropTypes.string,
+  className: PropTypes.string,
   title: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   checked: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 export { UICheckbox };
